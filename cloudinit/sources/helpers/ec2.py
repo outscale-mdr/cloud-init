@@ -210,7 +210,7 @@ def _get_instance_metadata(
             if not skip_cb or not skip_cb(e):
                 raise
             else:
-                LOG.warning("Skipped retrieval of the content of %s", base_url)
+                LOG.warning("Skipped retrieval of the content of %s", url)
                 return "(skipped)"
 
     try:
