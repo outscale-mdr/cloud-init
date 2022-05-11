@@ -127,7 +127,7 @@ DI_DSNAME=""
 DI_DSLIST_DEFAULT="MAAS ConfigDrive NoCloud AltCloud Azure Bigstep \
 CloudSigma CloudStack DigitalOcean Vultr AliYun Ec2 GCE OpenNebula OpenStack \
 OVF SmartOS Scaleway Hetzner IBMCloud Oracle Exoscale RbxCloud UpCloud VMware \
-LXD"
+LXD Outscale"
 DI_DSLIST=""
 DI_MODE=""
 DI_ON_FOUND=""
@@ -1485,6 +1485,12 @@ dscheck_VMware() {
     fi
 
     return "${DS_NOT_FOUND}"
+}
+
+dscheck_Outscale() {
+    local uuid="${DI_DMI_PRODUCT_UUID}"
+    test "${uuid#osc}" != "$uuid" && return ${DS_FOUND}
+    return ${DS_NOT_FOUND}
 }
 
 collect_info() {

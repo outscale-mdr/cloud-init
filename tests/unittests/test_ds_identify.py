@@ -932,6 +932,16 @@ class TestOracle(DsIdentifyBase):
         mycfg["files"][P_CHASSIS_ASSET_TAG] = "Not Oracle"
         self._check_via_dict(mycfg, rc=RC_NOT_FOUND)
 
+class TestOutscale(DsIdentifyBase):
+    def test_found_by_system_uuid(self):
+        """Simple positive test of Outscale by system-uuid."""
+        self._test_ds_found("Oracle")
+
+    def test_not_found(self):
+        """Simple negative test of Outscale."""
+        mycfg = copy.deepcopy(VALID_CFG["Outscale"])
+        mycfg["files"][P_PRODUCT_UUID] = "Not Outscale"
+        self._check_via_dict(mycfg, rc=RC_NOT_FOUND)
 
 def blkid_out(disks=None):
     """Convert a list of disk dictionaries into blkid content."""
@@ -1810,6 +1820,12 @@ VALID_CFG = {
             MOCK_VIRT_IS_VMWARE,
         ],
     },
+    "Outscale": {
+        "ds": "Outscale",
+        "files": {
+            P_PRODUCT_UUID: "osc3aef5-54be-4843-8d24-8c819f88453e\n",
+        },
+    }
 }
 
 # vi: ts=4 expandtab
