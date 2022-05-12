@@ -1488,9 +1488,7 @@ dscheck_VMware() {
 }
 
 dscheck_Outscale() {
-    local uuid="${DI_DMI_PRODUCT_UUID}"
-    test "${uuid#osc}" != "$uuid" && return ${DS_FOUND}
-    return ${DS_NOT_FOUND}
+    return ${DS_FOUND}
 }
 
 collect_info() {

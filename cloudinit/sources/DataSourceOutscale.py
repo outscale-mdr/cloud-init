@@ -61,7 +61,7 @@ class DataSourceOutscale(EC2.DataSourceEc2):
         return crawled_metadata
 
 def _is_outscale():
-    return dmi.read_dmi_data("system-uuid").startswith(OUTSCALE_SYSTEM_UUID_PREFIX)
+    return True
 
 
 # Used to match classes to dependencies
